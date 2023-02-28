@@ -1,10 +1,10 @@
-package com.example.flutter_native_library
+package com.example.explorer_demo
+
+import io.flutter.embedding.android.FlutterActivity
 
 import android.content.Intent
 import androidx.annotation.NonNull
 import br.com.nomo.explorer.service.ExplorerService
-import explorer.src.
-import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 
@@ -33,3 +33,4 @@ class MainActivity: FlutterActivity() {
         }
     }
 }
+

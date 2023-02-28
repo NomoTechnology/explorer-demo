@@ -1,4 +1,4 @@
-# flutter_native_library
+# explorer_demo
 
 A new Flutter project.
 

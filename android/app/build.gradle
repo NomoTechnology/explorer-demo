@@ -44,7 +44,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.flutter_native_library"
+        applicationId "com.example.explorer_demo"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
         minSdkVersion 22
@@ -68,6 +68,5 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-//    implementation(name:'explorer-debug', ext:'aar')
-    implementation 'com.github.NomoTechnology:explorer-sdk:v1.0'
+    implementation(name:'explorer-debug', ext:'aar')
 }
