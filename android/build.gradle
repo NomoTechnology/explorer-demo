@@ -15,8 +15,11 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        flatDir {
-            dirs("libs")
+        maven {
+            setUrl("https://jitpack.io")
+            credentials {
+                username = /*ADD_CREDENTIAL*/
+            }
         }
     }
 }
