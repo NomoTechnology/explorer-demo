@@ -5,6 +5,7 @@ import io.flutter.embedding.android.FlutterActivity
 import android.content.Intent
 import androidx.annotation.NonNull
 import br.com.nomo.explorer.service.ExplorerService
+import br.com.nomo.explorer.utlis.IntentExplorerValues
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 
@@ -17,13 +18,15 @@ class MainActivity: FlutterActivity() {
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, METHOD_CHANNEL_NAME).setMethodCallHandler {
             // Note: this method is invoked on the main thread.
                 call, result ->
+            val intent = Intent(this, ExplorerService::class.java)
+
             when (call.method) {
                 "startExplorerService" -> {
-                    startService(Intent(this, ExplorerService::class.java))
+                    startService(intent.putExtra(IntentExplorerValues.CUSTOM_KEY,/*MY_KEY*/))
                     result.success("Started!")
                 }
                 "stopExplorerService" -> {
-                    stopService(Intent(this, ExplorerService::class.java))
+                    startService(intent.putExtra(IntentExplorerValues.CUSTOM_KEY,/*MY_KEY*/))
                     result.success("Stopped!")
                 }
                 else -> {
