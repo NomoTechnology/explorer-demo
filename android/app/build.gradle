@@ -68,5 +68,5 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.github.NomoTechnology:explorer-sdk:v1.0'
+    implementation 'com.github.NomoTechnology.explorer-sdk:explorer:v1.1.0'
 }
