@@ -35,6 +35,7 @@ class OnboardingScreen extends StatelessWidget {
           const Spacer(),
           PrimaryButton(
             text: "Começar",
+            color: const Color(0xFF373D47),
             onPressed: () {
               Navigator.of(context)
                   .pushNamed(LocationPermissionScreen.routeName);
