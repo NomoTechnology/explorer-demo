@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'screens/home_screen.dart';
+import 'screens/onboarding_screen.dart';
 import 'screens/phone_permission_screen.dart';
 import 'screens/location_permission_screen.dart';
 
@@ -37,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return MaterialApp(
       title: 'Native permissions',
       routes: {
-        '/': (context) => const HomeScreen(),
+        '/': (context) => const OnboardingScreen(),
         LocationPermissionScreen.routeName: (context) =>
             const LocationPermissionScreen(),
         ServiceScreen.routeName: (context) => const ServiceScreen(),

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import './location_permission_screen.dart';
 import '../widgets/primary_button.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class OnboardingScreen extends StatelessWidget {
+  const OnboardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class HomeScreen extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 32.0,
                   color: Color(0xFF373D47),
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ),
