@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'screens/home_screen.dart';
 import 'screens/phone_permission_screen.dart';
 import 'screens/location_permission_screen.dart';
 
@@ -14,12 +15,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Foreground Example Home Page'),
+      home: MyHomePage(title: 'Foreground Example Home Page'),
     );
   }
 }
@@ -39,7 +37,9 @@ class _MyHomePageState extends State<MyHomePage> {
     return MaterialApp(
       title: 'Native permissions',
       routes: {
-        '/': (context) => const LocationPermissionScreen(),
+        '/': (context) => const HomeScreen(),
+        LocationPermissionScreen.routeName: (context) =>
+            const LocationPermissionScreen(),
         ServiceScreen.routeName: (context) => const ServiceScreen(),
         PhonePermissionScreen.routeName: (context) =>
             const PhonePermissionScreen(),
