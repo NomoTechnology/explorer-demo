@@ -61,10 +61,12 @@ class _PhonePermissionScreenState extends State<PhonePermissionScreen>
     );
   }
 
-  Future<void> _checkPermissionsAndPick() async {
+  Future<void> _checkPermission() async {
     final hasFilePermission = await _model.requestPermission();
     if (hasFilePermission) {
-      try {} on Exception catch (e) {
+      try {
+        // Success
+      } on Exception catch (e) {
         debugPrint('Error when picking a file: $e');
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -85,7 +87,7 @@ class _PhonePermissionScreenState extends State<PhonePermissionScreen>
 
           switch (model.phonePermission) {
             case PhonePermission.none:
-              widget = createPermissionWidget(false, _checkPermissionsAndPick);
+              widget = createPermissionWidget(false, _checkPermission);
               break;
             case PhonePermission.denied:
               widget = createPermissionWidget(true, openAppSettings);
@@ -98,7 +100,7 @@ class _PhonePermissionScreenState extends State<PhonePermissionScreen>
                 ),
               );
 
-              Future.delayed(const Duration(seconds: 2), () {
+              Future.delayed(const Duration(seconds: 1), () {
                 Navigator.of(context).pushNamed(ServiceScreen.routeName);
               });
               break;

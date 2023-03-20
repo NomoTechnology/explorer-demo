@@ -62,10 +62,12 @@ class _LocationPermissionScreenState extends State<LocationPermissionScreen>
     );
   }
 
-  Future<void> _checkPermissionsAndPick() async {
+  Future<void> _checkPermission() async {
     final hasFilePermission = await _model.requestPermission();
     if (hasFilePermission) {
-      try {} on Exception catch (e) {
+      try {
+        // Success
+      } on Exception catch (e) {
         debugPrint('Error when picking a file: $e');
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -86,7 +88,7 @@ class _LocationPermissionScreenState extends State<LocationPermissionScreen>
 
           switch (model.locationPermission) {
             case LocationPermission.none:
-              widget = createPermissionWidget(false, _checkPermissionsAndPick);
+              widget = createPermissionWidget(false, _checkPermission);
               break;
             case LocationPermission.denied:
               widget = createPermissionWidget(true, openAppSettings);
@@ -99,7 +101,7 @@ class _LocationPermissionScreenState extends State<LocationPermissionScreen>
                 ),
               );
 
-              Future.delayed(const Duration(seconds: 2), () {
+              Future.delayed(const Duration(seconds: 1), () {
                 Navigator.of(context)
                     .pushNamed(PhonePermissionScreen.routeName);
               });
