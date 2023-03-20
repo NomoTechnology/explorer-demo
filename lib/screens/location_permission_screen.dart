@@ -93,7 +93,10 @@ class _LocationPermissionScreenState extends State<LocationPermissionScreen>
               break;
             case LocationPermission.accepted:
               widget = const Center(
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(
+                  color: Color(0xFF373D47),
+                  strokeWidth: 3,
+                ),
               );
 
               Future.delayed(const Duration(seconds: 2), () {
