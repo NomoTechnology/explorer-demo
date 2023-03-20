@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../widgets/primary_button.dart';
+
 class ServiceScreen extends StatefulWidget {
-  static const routeName = 'service';
+  static const routeName = 'service-screen';
 
   const ServiceScreen({super.key});
 
@@ -13,7 +15,8 @@ class ServiceScreen extends StatefulWidget {
 }
 
 class _ServiceScreenState extends State<ServiceScreen> {
-  String _serverState = 'Did not make the call yet';
+  String _serverState = 'SDK não iniciada';
+  bool _isServiceStarted = false;
 
   Future<void> _startService() async {
     try {
@@ -21,6 +24,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
           .invokeMethod('startExplorerService');
       setState(() {
         _serverState = result;
+        _isServiceStarted = true;
       });
     } on PlatformException catch (e) {
       print("Failed to invoke method: '${e.message}'.");
@@ -33,6 +37,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
           await ServiceScreen.methodChannel.invokeMethod('stopExplorerService');
       setState(() {
         _serverState = result;
+        _isServiceStarted = false;
       });
     } on PlatformException catch (e) {
       print("Failed to invoke method: '${e.message}'.");
@@ -42,21 +47,20 @@ class _ServiceScreenState extends State<ServiceScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Service"),
-      ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            PrimaryButton(
+              text:
+                  _isServiceStarted ? 'Pausar o serviço' : 'Iniciar o serviço',
+              color: _isServiceStarted
+                  ? const Color(0xFFEFAA9E)
+                  : const Color(0xFFBEEDEA),
+              onPressed: _isServiceStarted ? _stopService : _startService,
+            ),
             Text(_serverState),
-            ElevatedButton(
-              child: Text('Start Service'),
-              onPressed: _startService,
-            ),
-            ElevatedButton(
-              child: Text('Stop Service'),
-              onPressed: _stopService,
-            ),
           ],
         ),
       ),
